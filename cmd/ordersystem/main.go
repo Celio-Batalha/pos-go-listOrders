@@ -78,15 +78,15 @@ func main() {
 	http.Handle("/query", srv)
 
 	fmt.Println("Starting GraphQL server on port", configs.GraphqlServerPort)
-	fmt.Printf("GraphQL playground: http://localhost:%s/\n", configs.GraphqlServerPort)
-	go http.ListenAndServe(":"+configs.GraphqlServerPort, nil)
+	fmt.Printf("GraphQL playground: http://localhost%s/\n", configs.GraphqlServerPort)
+	go http.ListenAndServe(configs.GraphqlServerPort, nil)
 
 	// Manter o programa rodando
 	select {}
 }
 
 func getRabbitMQChannel() *amqp.Channel {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@rabbitmq:5672/")
 	if err != nil {
 		panic("Error connecting to RabbitMQ: " + err.Error())
 	}

@@ -1,13 +1,13 @@
 # É importante executar primeiro o docker composer
-1 - No terminal executar o comando: docker compose up -d
-2 - No terminal dentro da pasta cmd/ordersystem execulta o comando: go run . para subir os serviços, webserver, grpc, graphql.
 
-3 - Em outra aba do terminal executa o camando: evans --host localhost --port 50051 -r repl
+1 - No terminal executar o comando: docker compose up -d --build
+#
+2 - Em outra aba do terminal executa o camando: evans --host localhost --port 50051 -r repl
   - package pb
   - service OrderService
   - call ListOrders
-
-4 - No browser acessar localhost:8080
+#
+3 - No browser acessar localhost:8080
     query ListOrders{
       orders {
         id
@@ -16,24 +16,20 @@
         finalPrice
       }
     }
-##
-
-
 
 # Testes que você pode fazer:
-# WEB SERVICE
+- WEB SERVICE
   Executa o comando no api.http
-  # Listar
+- Listar
   GET http://localhost:8000/orders
 
-# GRPC
+- GRPC
   evans --host localhost --port 50051 -r repl
   package pb
   service OrderService
   call ListOrders
 
-# GRAPHQL
-  # Listar (se implementar)
+- GRAPHQL
   query ListOrders{
     orders {
       id
