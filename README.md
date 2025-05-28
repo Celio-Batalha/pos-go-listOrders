@@ -1,6 +1,8 @@
 # É importante executar primeiro o docker composer
 
 1 - No terminal executar o comando: docker compose up -d --build
+    no Browser acessar - http://localhost:8080/orders
+
 #
 2 - Em outra aba do terminal executa o camando: evans --host localhost --port 50051 -r repl
   - package pb
